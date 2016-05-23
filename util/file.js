@@ -13,8 +13,9 @@ function objToFileFormat (obj) {
   // makes file writing deterministic
   let keys = Object.keys(obj).sort()
   keys.forEach((key) => {
+    let value = obj[key].replace(/\n/g, '\\n')
     // there's a bug including newlines in template string
-    res += (`${key}="${obj[key]}"` + '\n')
+    res += (`${key}="${value}"` + '\n')
   })
   return res
 }
